@@ -1,6 +1,7 @@
 # golang-learning
 
 My first project in golang, which I am going to use for studying.
+This repo started by following https://golang.org/doc/tutorial/create-module
 
 Run the code:
 
@@ -23,3 +24,8 @@ Compile and install the application
 - go list -f '{{.Target}}' // To discover the install path
 - go install
 - hello
+
+Study notes:
+
+- Tour of go: https://tour.golang.org/list
+- Why types look the way they do? https://blog.golang.org/declaration-syntax
