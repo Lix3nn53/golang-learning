@@ -11,3 +11,8 @@ Run the code:
 or just
 
 - go run hello.go
+
+Run tests:
+
+- cd greetings
+- go test -v
