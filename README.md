@@ -6,4 +6,8 @@ Run the code:
 
 - cd hello
 - go build
-- ./hello.exe or go run hello.go
+- ./hello.exe
+
+or just
+
+- go run hello.go
