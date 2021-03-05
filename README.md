@@ -16,3 +16,10 @@ Run tests:
 
 - cd greetings
 - go test -v
+
+Compile and install the application
+
+- cd hello
+- go list -f '{{.Target}}' // To discover the install path
+- go install
+- hello
