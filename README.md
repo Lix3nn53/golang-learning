@@ -97,3 +97,126 @@ Study notes:
     }
   }
   ```
+
+- A method is a function with a special receiver argument.
+- Remember: a method is just a function with a receiver argument.
+- You can only declare a method with a receiver whose type is defined in the same package as the method. You cannot declare a method with a receiver whose type is defined in another package (which includes the built-in types such as int).
+- You can declare methods with pointer receivers: https://tour.golang.org/methods/4
+- Functions with a pointer argument must take a pointer while methods with pointer receivers take either a value or a pointer as the receiver when they are called: https://tour.golang.org/methods/6
+- Choosing a value or pointer receiver: https://tour.golang.org/methods/8
+- Interfaces: https://tour.golang.org/methods/9
+- Interfaces are implemented implicitly: https://tour.golang.org/methods/10
+- The empty interface: https://tour.golang.org/methods/14
+- Type assertions: https://tour.golang.org/methods/15
+- ```
+  package main
+
+  import "fmt"
+
+  type IPAddr [4]byte
+
+  // TODO: Add a "String() string" method to IPAddr.
+  func (p IPAddr) String() string {
+    return fmt.Sprintf("%v.%v.%v.%v", p[0], p[1], p[2], p[3])
+  }
+
+  func main() {
+    hosts := map[string]IPAddr{
+      "loopback":  {127, 0, 0, 1},
+      "googleDNS": {8, 8, 8, 8},
+    }
+    for name, ip := range hosts {
+      fmt.Printf("%v: %v\n", name, ip)
+    }
+  }
+  ```
+
+- Functions often return an error value, and calling code should handle errors by testing whether the error equals nil.
+- ```
+  package main
+
+  import (
+    "fmt"
+  )
+
+  type ErrNegativeSqrt struct {
+    Value float64
+  }
+
+  func (e *ErrNegativeSqrt) Error() string {
+    return fmt.Sprintf("cannot Sqrt negative number: %v", e.Value)
+  }
+
+  func Sqrt(x float64) (float64, error) {
+    if (x < 0) {
+      return 0, &ErrNegativeSqrt {
+        x,
+      }
+    }
+
+    z := 1.0
+
+    diff := 1.0
+    for diff > 0.0001 {
+      a := z
+      z -= (z*z - x) / (2*z)
+      diff = a - z
+      if (diff < 0) {
+        diff *= -1
+      }
+    }
+
+    return z, nil
+    // return 0, nil
+  }
+
+  func main() {
+    fmt.Println(Sqrt(4))
+    fmt.Println(Sqrt(-2))
+  }
+  ```
+
+- Readers: https://tour.golang.org/methods/21
+- ```
+  package main
+
+  import (
+    "io"
+    "os"
+    "strings"
+  )
+
+  type rot13Reader struct {
+    r io.Reader
+  }
+
+  func rot13(x byte) byte {
+      switch {
+      case x >= 65 && x <= 77:
+          fallthrough
+      case x >= 97 && x <= 109:
+          x = x + 13
+      case x >= 78 && x <= 90:
+          fallthrough
+      case x >= 110 && x <= 122:
+          x = x - 13
+      }
+      return x
+  }
+
+  func (r13 *rot13Reader) Read(b []byte) (int, error) {
+      n, err := r13.r.Read(b)
+      for i := 0; i <= n; i++ {
+          b[i] = rot13(b[i])
+      }
+      return n, err
+  }
+
+  func main() {
+    s := strings.NewReader("Lbh penpxrq gur pbqr!")
+    r := rot13Reader{s}
+    io.Copy(os.Stdout, &r)
+  }
+  ```
+
+- Images exercise: https://tour.golang.org/methods/25
