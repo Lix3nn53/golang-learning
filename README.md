@@ -3,7 +3,7 @@
 My first project in golang, which I am going to use for studying.
 This repo started by following https://golang.org/doc/tutorial/create-module
 
-Run the code:
+### Run the code:
 
 - cd hello
 - go build
@@ -13,23 +13,29 @@ or just
 
 - go run hello.go
 
-Run tests:
+### Run tests:
 
 - cd greetings
 - go test -v
 
-Compile and install the application:
+### Compile and install the application:
 
 - cd hello
 - go list -f '{{.Target}}' // To discover the install path
 - go install
 - hello
 
-Study notes:
+## Study notes
 
 - Tour of go: https://tour.golang.org/list
 - Why types look the way they do? https://blog.golang.org/declaration-syntax
+
+### Flow control statements: for, if, else, switch and defer
+
 - defers: https://tour.golang.org/flowcontrol/13
+
+### More types: structs, slices, and maps.
+
 - Unlike C, Go has no pointer arithmetic.
 - A struct is a collection of fields.
 - Struct fields can be accessed through a struct pointer. To access the field X of a struct when we have the struct pointer p we could write (\*p).X. However that notation is cumbersome, so the language permits us instead to write just p.X, without the explicit dereference.
@@ -97,6 +103,8 @@ Study notes:
     }
   }
   ```
+
+### Methods and interfaces
 
 - A method is a function with a special receiver argument.
 - Remember: a method is just a function with a receiver argument.
