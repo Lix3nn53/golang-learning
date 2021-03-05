@@ -18,7 +18,7 @@ Run tests:
 - cd greetings
 - go test -v
 
-Compile and install the application
+Compile and install the application:
 
 - cd hello
 - go list -f '{{.Target}}' // To discover the install path
@@ -29,3 +29,4 @@ Study notes:
 
 - Tour of go: https://tour.golang.org/list
 - Why types look the way they do? https://blog.golang.org/declaration-syntax
+- defers: https://tour.golang.org/flowcontrol/13
