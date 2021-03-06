@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"streetleague.com/greetings"
+	"mylearning.com/greetings"
 )
 
 func main() {
