@@ -228,3 +228,74 @@ or just
   ```
 
 - Images exercise: https://tour.golang.org/methods/25
+
+### Concurrency
+
+- A goroutine is a lightweight thread managed by the Go runtime.
+- `go f(x, y, z)` The evaluation of f, x, y, and z happens in the current goroutine and the execution of f happens in the new goroutine.
+- Channels are a typed conduit through which you can send and receive values with the channel operator, <-. https://tour.golang.org/concurrency/2
+- Channels can be buffered. Provide the buffer length as the second argument to make to initialize a buffered channel: https://tour.golang.org/concurrency/3
+- A sender can close a channel to indicate that no more values will be sent. https://tour.golang.org/concurrency/4
+- The select statement lets a goroutine wait on multiple communication operations. A select blocks until one of its cases can run, then it executes that case. It chooses one at random if multiple are ready. https://tour.golang.org/concurrency/5
+- The default case in a select is run if no other case is ready.
+- Exercise: Equivalent Binary Trees
+
+```
+  package main
+
+  import (
+      "golang.org/x/tour/tree"
+    "fmt"
+  )
+
+  // Walk walks the tree t sending all values
+  // from the tree to the channel ch.
+  func Walk(t *tree.Tree, ch chan int) {
+      WalkRecursive(t, ch)
+      close(ch)
+  }
+
+  func WalkRecursive(t *tree.Tree, ch chan int) {
+      if t != nil {
+          WalkRecursive(t.Left, ch)
+          ch <- t.Value
+          WalkRecursive(t.Right, ch)
+      }
+  }
+
+  // Same determines whether the trees
+  // t1 and t2 contain the same values.
+  func Same(t1, t2 *tree.Tree) bool {
+      ch1, ch2 := make(chan int), make(chan int)
+      go Walk(t1, ch1)
+      go Walk(t2, ch2)
+      for {
+          n1, ok1 := <- ch1
+          n2, ok2 := <- ch2
+      fmt.Printf("%v %v\n", n1, ok1)
+      fmt.Printf("%v %v\n", n2, ok2)
+          if ok1 != ok2 || n1 != n2 {
+            return false
+          }
+          if !ok1 {
+            break;
+          }
+      }
+      return true
+  }
+
+  func main() {
+    ch := make(chan int)
+      go Walk(tree.New(1), ch)
+
+    for i := 0; i < 10; i++ {
+
+    }
+
+      fmt.Println(Same(tree.New(1), tree.New(2)))
+      fmt.Println(Same(tree.New(1), tree.New(1)))
+      fmt.Println(Same(tree.New(2), tree.New(1)))
+  }
+```
+
+- sync.Mutex: https://tour.golang.org/concurrency/9
