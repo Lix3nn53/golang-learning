@@ -6,10 +6,13 @@ import (
 	"time"
 )
 
+// By default, sends and receives block until the other side is ready. This allows goroutines to synchronize without explicit locks or condition variables.
 func main() {
 	c := fanIn(boring("Joe"), boring("Ann"))
 	for i := 0; i < 10; i++ {
+		fmt.Println("1")
 		fmt.Println(<-c) // HL
+		fmt.Println("2")
 	}
 	fmt.Println("You're both boring; I'm leaving.")
 }
