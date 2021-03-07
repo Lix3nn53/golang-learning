@@ -25,7 +25,9 @@ or just
 - go install
 - hello
 
-## Study notes
+## Study go tour
+
+Study codes are in `tour` folder
 
 - Tour of go: https://tour.golang.org/list
 - Why types look the way they do? https://blog.golang.org/declaration-syntax
@@ -73,3 +75,9 @@ or just
 - The default case in a select is run if no other case is ready.
 - Exercise: Equivalent Binary Trees
 - sync.Mutex: https://tour.golang.org/concurrency/9
+
+## Study Google I/O 2012
+
+https://youtu.be/f6kdp27TYZs
+
+- Study codes are in `patterns` folder
