@@ -82,8 +82,17 @@ https://youtu.be/f6kdp27TYZs
 
 - Study codes are in `patterns` folder
 
-## Study Codewalk: Share Memory By Communicating
-
-https://golang.org/doc/codewalk/sharemem/
+## Study Codewalks 
 
 - Study codes are in `codewalk` folder
+
+1 - Share Memory By Communicating: https://golang.org/doc/codewalk/sharemem/
+2 - First-Class Functions in Go: https://golang.org/doc/codewalk/functions/
+
+## The Go Blog
+
+https://blog.golang.org/
+
+## Go by example
+
+https://gobyexample.com/

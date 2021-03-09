@@ -1,7 +1,7 @@
 // Copy of https://golang.org/doc/codewalk/sharemem/
 // Copied for practice
 
-package codewalk
+package main
 
 import (
 	"log"

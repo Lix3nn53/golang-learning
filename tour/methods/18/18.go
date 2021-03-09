@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// IPAddr hmmm
+// IPAddr hmm
 type IPAddr [4]byte
 
 // TODO: Add a "String() string" method to IPAddr.
