@@ -1,3 +1,3 @@
-module streetleague.com/greetings
+module mylearning.com/greetings
 
 go 1.16

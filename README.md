@@ -81,3 +81,9 @@ Study codes are in `tour` folder
 https://youtu.be/f6kdp27TYZs
 
 - Study codes are in `patterns` folder
+
+## Study Codewalk: Share Memory By Communicating
+
+https://golang.org/doc/codewalk/sharemem/
+
+- Study codes are in `codewalk` folder

@@ -2,6 +2,10 @@ module hello
 
 go 1.16
 
-replace streetleague.com/greetings => ../greetings
+replace (
+	mylearning.com/greetings latest => ../greetings latest
+)
 
-require streetleague.com/greetings v1.1.0
+require (
+	mylearning.com/greetings lastest
+)
